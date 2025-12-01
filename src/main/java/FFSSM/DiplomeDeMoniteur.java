@@ -1,19 +1,21 @@
 /**
  * @(#) Moniteur.java
  */
-package FFSSM;
+package ffssm;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.ArrayList;
 
-public class DiplomeDeMoniteur {
+public class DiplomeDeMoniteur{
 
     private final int numeroDiplome;
     private final Plongeur possesseur;
+    private ArrayList<Embauche> list_embauche = new ArrayList<>();
 
     public DiplomeDeMoniteur(Plongeur possesseur, int numeroDiplome) {
         this.numeroDiplome = numeroDiplome;
         this.possesseur = possesseur;
+
     }
 
     /**
@@ -22,8 +24,12 @@ public class DiplomeDeMoniteur {
      * @return l'employeur actuel de ce moniteur ou null s'il n'en a pas
      */
     public Club employeurActuel() {
-         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        if(list_embauche.isEmpty()){
+            return null;
+        }
+        else{
+            return list_embauche.get(list_embauche.size()-1).getClub();
+        }
     }
     
     /**
@@ -31,14 +37,13 @@ public class DiplomeDeMoniteur {
      * @param employeur le club employeur
      * @param debutNouvelle la date de début de l'embauche
      */
-    public void nouvelleEmbauche(Club employeur, LocalDate debutNouvelle) {   
-         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");	    
+    public void nouvelleEmbauche(Club employeur, LocalDate debutNouvelle) { 
+        Embauche newEmbauche = new Embauche (debutNouvelle, this, employeur);
+        list_embauche.add (newEmbauche);
     }
 
-    public List<Embauche> emplois() {
-         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+    public ArrayList<Embauche> emplois() {
+        return list_embauche;
     }
 
 }

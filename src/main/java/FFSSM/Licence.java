@@ -1,7 +1,7 @@
 /**
  * @(#) LicencePlongeur.java
  */
-package FFSSM;
+package ffssm;
 
 import java.time.LocalDate;
 
@@ -20,6 +20,7 @@ public class Licence {
     @Getter @Setter
     public Club club;
 
+
     public Licence(Plongeur possesseur, String numero, LocalDate delivrance, Club club) {
         this.possesseur = possesseur;
         this.numero = numero;
@@ -34,8 +35,11 @@ public class Licence {
      * @return vrai si valide à la date d
      **/
     public boolean estValide(LocalDate d) {
-         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        LocalDate oneYearAgo = d.minusYears(1);
+        if (oneYearAgo.isAfter(delivrance)){
+            return false;
+        }
+        return true;
     }
 
 }

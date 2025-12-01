@@ -2,7 +2,7 @@
  * @(#) Personne.java
  */
 
-package FFSSM;
+package ffssm;
 
 import java.time.LocalDate;
 

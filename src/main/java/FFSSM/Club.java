@@ -1,8 +1,9 @@
 /**
  * @(#) Club.java
  */
-package FFSSM;
+package ffssm;
 
+import java.util.ArrayList;
 import java.util.Set;
 
 import lombok.Getter;
@@ -22,6 +23,9 @@ public class Club {
     @Getter @Setter
     public String telephone;
 
+    @Getter @Setter
+    public ArrayList<Plongee> list_plongees;
+
     public Club(DiplomeDeMoniteur president, String nom) {
         this.president = president;
         this.nom = nom;
@@ -34,8 +38,13 @@ public class Club {
      * @return l'ensemble des plongées non conformes
      */
     public Set<Plongee> plongeesNonConformes() {
-         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        ArrayList<Plongee> plongees_noncoforme = new ArrayList<>();
+        for (Plongee plong: list_plongees){
+            if(!plong.estConforme()){
+                plongees_noncoforme.add(plong);
+            }
+        }
+        return Set.copyOf(plongees_noncoforme);
     }
 
     /**
@@ -43,8 +52,7 @@ public class Club {
      * @param p la nouvelle plongée
      */
     public void organisePlongee(Plongee p) {
-         // TODO: Implémenter cette méthode
-        throw new UnsupportedOperationException("Pas encore implémenté");
+        list_plongees.add(p);
     }
 
 

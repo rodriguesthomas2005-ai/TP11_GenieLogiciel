@@ -1,4 +1,4 @@
-package FFSSM;
+package ffssm;
 
 import lombok.Data;
 import lombok.NonNull;
